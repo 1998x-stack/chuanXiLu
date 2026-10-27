@@ -1,7 +1,7 @@
 name: External text witness audit
 on:
   push:
-    branches: [fix/source-critical-audit]
+    branches: [main, fix/source-critical-audit]
     paths:
       - scripts/audit-wikisource.mjs
       - scripts/compare-witness.py
