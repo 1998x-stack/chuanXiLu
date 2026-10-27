@@ -31,3 +31,24 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify public Pages content
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          : "${SITE_URL:?GitHub Pages did not return a public URL}"
+          base="${SITE_URL%/}/"
+          mkdir -p /tmp/chuanxilu-smoke/data
+          for path in index.html app.js styles.css data/volume-1.json data/volume-2.json data/volume-3.json data/topics.js; do
+            curl --fail --location --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors --max-time 20 "${base}${path}" -o "/tmp/chuanxilu-smoke/${path}"
+          done
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const root="/tmp/chuanxilu-smoke/";
+            const html=fs.readFileSync(root+"index.html","utf8");
+            if(!html.includes("topic-grid")||!html.includes("传习录")) throw new Error("Deployed homepage missing Stage 1");
+            const volumes=[1,2,3].map(i=>JSON.parse(fs.readFileSync(root+"data/volume-"+i+".json","utf8")));
+            const lengths=volumes.map(v=>v.entries.length);
+            if(lengths.join(",")!=="129,71,143"||volumes.reduce((n,v)=>n+v.prefaces.length,0)!==5)throw new Error("Deployed JSON content incomplete");
+            console.log("Public Pages smoke PASS: "+volumes.reduce((n,v)=>n+v.entries.length,0)+" original entries, 5 paratexts");
+          '
