@@ -24,8 +24,12 @@
 </header>
 <section class="hero" aria-labelledby="hero-title">
   <div><p class="eyebrow">CHUAN XI LU · 明代心学</p><h1 id="hero-title">知是行之始，<br>行是知之成。</h1><p class="hero-sub">读其言，辨其义，验诸事。三卷原典与可溯源的心学研读。</p>
-  <div class="hero-meta"><span>上 · 中 · 下三卷</span><span>343 条电子底本条目</span><span>译注逐步校审</span></div></div>
+  <div class="hero-meta"><span>上 · 中 · 下三卷</span><span>343 条语录与书信</span><span>5 篇序跋附录</span><span>试读译注持续审校</span></div></div>
   <div class="hero-mark" aria-hidden="true"><span>知</span><span>行</span><small>合一</small></div>
+</section>
+<section class="topic-shelf" aria-labelledby="topics-title">
+  <div class="topic-heading"><div><p class="eyebrow">心学概念 · 原文可溯源</p><h2 id="topics-title">循其义，回到原文</h2></div><p>分类仅按关键词检索，不是自动判定的学术标签。点击专题筛选命中的原典条目。</p></div>
+  <div id="topic-grid" class="topic-grid"><p class="muted">正在生成主题索引……</p></div>
 </section>
 <main class="reading-layout">
   <aside class="catalogue" aria-label="书目导航">
@@ -37,16 +41,20 @@
       <button data-volume="中" type="button" aria-pressed="false">卷中</button>
       <button data-volume="下" type="button" aria-pressed="false">卷下</button>
     </div>
+    <label class="field-label" for="kind-filter">文献类型</label>
+    <select id="kind-filter"><option value="全部">全部类型</option><option value="问答语录">问答语录</option><option value="论学书信">论学书信</option><option value="训蒙教约">训蒙教约</option><option value="序跋附录">序跋附录</option></select>
+    <div class="sidebar-actions"><label><input id="bookmarks-only" type="checkbox"> 仅看收藏</label><button id="clear-filters" type="button">清空筛选</button></div>
     <div class="catalogue-caption"><span id="match-count">正在载入</span><button id="open-last" class="text-button" type="button">上次阅读</button></div>
     <nav id="entry-list" aria-label="原典条目目录"><p class="muted">正在加载三卷原典……</p></nav>
   </aside>
   <section class="reader" id="reader" aria-label="原文阅读区" tabindex="-1">
     <div class="reader-toolbar"><span id="reading-position">卷 · 篇章</span><div class="reader-buttons"><button id="bookmark" type="button">收藏</button><button id="copy-link" type="button">复制引用</button></div></div>
     <h2 id="entry-title">正在加载</h2>
+    <div id="document-meta" class="document-meta"></div>
     <p id="entry-summary" class="reader-summary">正文按句展示；已有的现代释义默认隐藏，点击单句才展开。</p>
     <div id="sentences" class="sentences" aria-live="off"></div>
     <div class="reader-bottom"><button id="prev" type="button">← 上一条</button><span id="entry-status" role="status" aria-live="polite"></span><button id="next" type="button">下一条 →</button></div>
-    <div class="source-note"><strong>文本说明</strong><p>原文为带现代标点的电子转录，尚未完成独立逐字校勘。现代释义仅对已制作的选句开放；无注释的句子不会自动生成或伪装为已审定译文。</p><a id="source-link" href="https://github.com/1998x-stack/chuanXiLu" target="_blank" rel="noopener noreferrer">查看该条转录来源 ↗</a></div>
+    <div class="source-note"><strong>文本说明</strong><p>原文为带现代标点的电子转录，尚未完成独立刊本校勘。部分选句提供草稿性质的独立撰写释读（初始折叠）；每句都有临时定位锚点。句段编号依当前标点生成，后续校勘可能改变，引用时应同时附原文字句。</p><a id="source-link" href="https://github.com/1998x-stack/chuanXiLu" target="_blank" rel="noopener noreferrer">查看该条转录来源 ↗</a></div>
   </section>
 </main>
 <footer class="site-footer"><span>传习录 · 一念发动处，便是工夫处。</span><span>古籍原文、现代解释、事实判断，须分层使用。</span></footer>
