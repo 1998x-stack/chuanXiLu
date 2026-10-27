@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ece5d6">
+  <meta name="description" content="传习录数字研读馆：上中下三卷原文、校勘状态、逐句研读与王阳明心学 AI Skill。">
+  <title>传习录 · 知行合一 | 数字研读馆</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#reader">跳转到原文</a>
+<div class="page-pattern" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="./" aria-label="传习录首页"><span class="seal">知行</span><span><strong>传习录</strong><small>王阳明 · 心学研读馆</small></span></a>
+  <div class="site-actions">
+    <a class="quiet-link" href="https://github.com/1998x-stack/chuanXiLu" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+    <button id="font-minus" class="icon-button" type="button" aria-label="缩小正文">字−</button>
+    <button id="font-plus" class="icon-button" type="button" aria-label="放大正文">字+</button>
+    <button id="theme-toggle" class="icon-button" type="button" aria-label="切换明暗主题">明/暗</button>
+  </div>
+</header>
+<section class="hero" aria-labelledby="hero-title">
+  <div><p class="eyebrow">CHUAN XI LU · 明代心学</p><h1 id="hero-title">知是行之始，<br>行是知之成。</h1><p class="hero-sub">读其言，辨其义，验诸事。三卷原典与可溯源的心学研读。</p>
+  <div class="hero-meta"><span>上 · 中 · 下三卷</span><span>343 条电子底本条目</span><span>译注逐步校审</span></div></div>
+  <div class="hero-mark" aria-hidden="true"><span>知</span><span>行</span><small>合一</small></div>
+</section>
+<main class="reading-layout">
+  <aside class="catalogue" aria-label="书目导航">
+    <label class="field-label" for="search">查原文 · 查篇章</label>
+    <input id="search" type="search" placeholder="如：良知、知行合一……" autocomplete="off">
+    <div id="volume-tabs" class="volume-tabs" role="group" aria-label="按卷筛选">
+      <button data-volume="全部" class="active" type="button" aria-pressed="true">全部</button>
+      <button data-volume="上" type="button" aria-pressed="false">卷上</button>
+      <button data-volume="中" type="button" aria-pressed="false">卷中</button>
+      <button data-volume="下" type="button" aria-pressed="false">卷下</button>
+    </div>
+    <div class="catalogue-caption"><span id="match-count">正在载入</span><button id="open-last" class="text-button" type="button">上次阅读</button></div>
+    <nav id="entry-list" aria-label="原典条目目录"><p class="muted">正在加载三卷原典……</p></nav>
+  </aside>
+  <section class="reader" id="reader" aria-label="原文阅读区" tabindex="-1">
+    <div class="reader-toolbar"><span id="reading-position">卷 · 篇章</span><div class="reader-buttons"><button id="bookmark" type="button">收藏</button><button id="copy-link" type="button">复制引用</button></div></div>
+    <h2 id="entry-title">正在加载</h2>
+    <p id="entry-summary" class="reader-summary">正文按句展示；已有的现代释义默认隐藏，点击单句才展开。</p>
+    <div id="sentences" class="sentences" aria-live="off"></div>
+    <div class="reader-bottom"><button id="prev" type="button">← 上一条</button><span id="entry-status" role="status" aria-live="polite"></span><button id="next" type="button">下一条 →</button></div>
+    <div class="source-note"><strong>文本说明</strong><p>原文为带现代标点的电子转录，尚未完成独立逐字校勘。现代释义仅对已制作的选句开放；无注释的句子不会自动生成或伪装为已审定译文。</p><a id="source-link" href="https://github.com/1998x-stack/chuanXiLu" target="_blank" rel="noopener noreferrer">查看该条转录来源 ↗</a></div>
+  </section>
+</main>
+<footer class="site-footer"><span>传习录 · 一念发动处，便是工夫处。</span><span>古籍原文、现代解释、事实判断，须分层使用。</span></footer>
+</body>
+</html>
