@@ -102,3 +102,38 @@ for r in worst:
 print("INDEPENDENT ELECTRONIC WITNESS COMPARISON")
 print(json.dumps({k:v for k,v in report.items() if k!="worst_30"},ensure_ascii=False,indent=2))
 for r in worst[:12]: print("WARNING",json.dumps(r,ensure_ascii=False))
+
+# The simple ordinal comparison above intentionally does NOT fix differing editorial
+# item order/splitting. Suggest approximate local matches separately; never auto-correct.
+from rapidfuzz import fuzz
+cand_text={n:han_only(raw) for n,raw in WITNESS.items()}
+suggestions=[]
+for source_no,source_entry in ENTS.items():
+    source_text=han_only(source_entry["text"])
+    proposed=source_no if source_no<=317 else source_no-1
+    candidate_numbers=range(max(1,proposed-25),min(342,proposed+25)+1)
+    results=sorted(((n,fuzz.ratio(source_text,cand_text[n])/100) for n in candidate_numbers),
+                   key=lambda x:x[1],reverse=True)
+    best_n,best_ratio=results[0]
+    expected_ratio=fuzz.ratio(source_text,cand_text.get(proposed,""))/100
+    # Partial similarity is a diagnostic of one-to-many splits; not a verified alignment.
+    partial=fuzz.partial_ratio(source_text,cand_text[best_n])/100 if best_ratio<0.9 else 1.0
+    suggestions.append({"source_no":source_no,"nominal_ref":proposed,"best_ref":best_n,
+      "direct_ratio":round(expected_ratio,5),"best_ratio":round(best_ratio,5),
+      "partial_ratio":round(partial,5),"delta":round(best_ratio-expected_ratio,5),
+      "needs_review":bool(best_n!=proposed or best_ratio<0.98)})
+moved=[x for x in suggestions if x["best_ref"]!=x["nominal_ref"] and x["delta"]>=0.12]
+low=[x for x in suggestions if x["best_ratio"]<0.80]
+align={
+ "method":"rapidfuzz ratio among reference +/-25; HYPOTHESES ONLY, no automatic renumbering",
+ "source_segments":343,
+ "different_best_reference_count":sum(x["best_ref"]!=x["nominal_ref"] for x in suggestions),
+ "strong_remapping_candidates":len(moved),
+ "weak_best_matches_below_80_percent":len(low),
+ "examples":moved[:70],
+ "weak_samples":low[:40]
+}
+(OUT/"alignment-suggestions.json").write_text(json.dumps({"summary":align,"items":suggestions},ensure_ascii=False,indent=2)+"\\n")
+print("ALIGNMENT DIAGNOSTICS",json.dumps({k:v for k,v in align.items() if k not in ("examples","weak_samples")},ensure_ascii=False))
+for item in moved[:30]:print("REORDER_CANDIDATE",json.dumps(item,ensure_ascii=False))
+for item in low[:12]:print("LOW_CONFIDENCE",json.dumps(item,ensure_ascii=False))
