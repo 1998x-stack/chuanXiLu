@@ -18,7 +18,7 @@ const corpus=await loadCorpus(async path=>({
 check(volumes.length===3,"three volumes");
 check(JSON.stringify(volumes.map(v=>v.volume))===JSON.stringify(["上","中","下"]),"canonical volume order");
 check(JSON.stringify(volumes.map(v=>v.entries.length))===JSON.stringify([129,71,143]),"source transcription counts");
-check(entries.length===343,"343 original text entries");
+check(entries.length===343,"343 unverified third-party source fragments (not independently verified full text)");
 check(prefaces.length===5,"five paratexts imported and accessible");
 check(corpus.documents.length===348,"all documents available for navigation");
 check(corpus.prefaces.length===5,"prefaces included by loader");
@@ -119,6 +119,8 @@ check(js.includes("readingHash(doc.id,i)"),"sentence deep link navigable");
 check(js.includes("renderTopics()"),"topic section rendered");
 check(!js.includes("innerHTML"),"no raw HTML injection");
 check(html.includes('src="./app.js"'),"relative Pages application path");
+check(html.includes('class="source-alert"'),"uncollated corpus must present explicit source warning");
+check(fs.readFileSync("SKILL.md","utf8").includes("SOURCE-CRITICAL-AUDIT.md"),"Skill must require external source scrutiny");
 check(css.includes(".modern-gloss[hidden]{display:none}"),"modern gloss CSS actually respects hidden");
 check(css.includes(".topic-card")&&css.includes(".sentence-target"),"topic and sentence styles exist");
 console.log("PASS "+passed+" assertions; "+entries.length+" original segments, "+prefaces.length+" appendices, "+
