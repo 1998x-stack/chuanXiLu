@@ -8,6 +8,8 @@ assert.deepEqual(WITNESS_ENTRY_COUNTS,[129,71,142]);
 const groups=groupedWitnessEntries(entries);
 assert.equal(groups.size,342);
 for(let i=1;i<=342;i++)assert.equal(groups.get(i)?.length,i===317?2:1,"witness "+i);
+assert.equal(crosswalkNumber(85),86);
+assert.equal(crosswalkNumber(86),85);
 assert.equal(crosswalkNumber(318),317);
 assert.equal(crosswalkNumber(319),318);
 assert.equal(crosswalkNumber(343),342);
