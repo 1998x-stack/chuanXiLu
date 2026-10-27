@@ -1,0 +1,25 @@
+name: External text witness audit
+on:
+  push:
+    branches: [fix/source-critical-audit]
+    paths:
+      - scripts/audit-wikisource.mjs
+      - .github/workflows/witness-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  witness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/audit-wikisource.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wiksource-external-audit
+          path: audit/wikisource-observations.json
+          if-no-files-found: ignore
