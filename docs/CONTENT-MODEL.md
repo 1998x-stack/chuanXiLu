@@ -37,3 +37,14 @@ data/annotations.js 记录 entry.id 对应的 quote、gloss、topic。quote 需�
 - sentence_id：保留标点版本、每句稳定锚点与异文偏移。
 - concepts、claims、counterarguments：心学概念的可靠出处关系。
 - 多底本的非破坏式对齐与译注多作者多许可。
+
+
+## Stage 1 文献索引与专题
+
+五份序跋含 id、title、kind=paratext、text、sourceFile、verification=pending，以精确源文件追溯，不计入343条正篇。loadCorpus 返回 entries、prefaces、documents，后者共348个文献单位。
+
+documentKind / filterDocuments 支持按卷、关键词、问答语录/论学书信/训蒙教约/序跋附录、主题关键词和书签组合。topic guide 另置于 data/topics.js，每专题有 keywords、summary、limit、evidence[]，必须在 CI 中核验示例引文存在于原句段。关键词命中不是完成学术概念标注。
+
+原有 #entry-0005 仍可使用；新增 #entry-0005-s003、#preface-上-P1。句段号由现代标点生成，不保证跨校勘版本不变。
+
+当前 data/annotations.js 每条释读带 quote、topic、gloss、status=draft、author；采用句段原文与草稿释读分层的方式。准确度检验不等于翻译审稿通过。详情见 EDITORIAL-WORKFLOW.md。

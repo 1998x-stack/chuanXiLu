@@ -1,14 +1,15 @@
 {
   "name": "chuanxilu-reading-room",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --check app.js && node --check data/index.js && node scripts/validate.mjs",
+    "test": "node --check app.js && node --check data/index.js && node --check data/topics.js && node --check data/annotations.js && node scripts/validate.mjs",
     "build": "node scripts/build.mjs",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "coverage": "node scripts/coverage.mjs"
   }
 }

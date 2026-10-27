@@ -10,15 +10,24 @@
 
 | 领域 | 目前实现 |
 | --- | --- |
-| 三卷文本 | 卷上129、卷中71、卷下143，共343条电子转录分段；另收5份序跋/按语数据 |
+| 三卷文本 | 卷上129、卷中71、卷下143，共343条电子转录分段；另收5份可单独阅读的序跋/按语 |
 | 篇章定位 | 徐爱、陆澄、薛侃、陈九川、黄直、黄省曾等语录，以及卷中论学书信 |
 | 阅读方式 | 原文按句呈现；原文在上，存在示范释义时逐句独立点击展开，默认隐藏 |
-| 内容状态 | 已建立完整条目索引；仅7则原创编辑性释读示范；大部分句子尚未译注及校勘 |
-| 阅读器 | 全文检索、按卷筛选、上/下条、条目深链接、收藏、字号、明暗主题 |
+| 内容状态 | 已建立完整条目索引；23则独立撰写的选句草稿释读；尚未提供全本逐句译注及刊本级校勘 |
+| 阅读器 | 全文检索、八专题证据导航、文献类型筛选、句段定位、收藏、字号、明暗主题 |
 | AI Skill | 依据有出处的真实语录提炼问题、引用、现代适用限制与可执行动作 |
 | 工程交付 | Node.js 无第三方运行依赖、内容完整性校验、静态构建、GitHub Actions 和 Pages 发布工作流 |
 
 **重要声明：** 这里的343条是所采用电子转录/现代编号体系的数量，不是明代书籍各版本固定不变的章数。录入不等于校勘通过；原文 verification=pending。本站没有搬运其他网站的现代白话译注，未完成的译解不应伪称已实现。
+
+## Stage 1 · 精读能力
+
+- 五份序跋作为独立文献可阅读、检索和分享，精确标注原始来源文件。
+- 八组心学专题以真实语句作为导航证据；结果仅代表关键词命中，不是已校订的思想知识图谱。
+- 23则独立编写的选句草稿释读，分别标注编辑者与 draft 状态；全本译文仍在推进。
+- 问答语录、论学书信、训蒙教约、序跋附录的类型筛选；可结合卷、搜索、收藏过滤。
+- #entry-0005、#entry-0005-s003、#preface-上-P1 细粒度链接，句段编号依现行标点生成，校勘后可能变化。
+- npm run coverage 用透明统计区分原文转录、句段、草稿释读与独立校勘数量。
 
 ## 直接复制到 Codex / OpenCode
 
@@ -80,6 +89,7 @@ ln -s "$HOME/chuanxilu-skill-source/.agents/skills/chuanxilu-wisdom" "$HOME/.age
 git clone https://github.com/1998x-stack/chuanXiLu.git
 cd chuanXiLu
 npm test
+npm run coverage
 npm run build
 npm run serve
 # 浏览器访问 http://localhost:4173
@@ -92,8 +102,8 @@ npm run serve
 | 路径 | 说明 |
 | --- | --- |
 | data/volume-1.json 至 volume-3.json | 原典全文、原篇章、稳定 ID、转录来源、审核状态 |
-| data/annotations.js | 仅包含已撰写的7条选句解释，不应当作全卷译注 |
-| data/index.js | 数据载入、保序句段切分、精确检索、引用源链接 |
+| data/annotations.js | 包含23则独立撰写且标识为 draft 的选句解释，不应当作全卷译注 |
+| data/index.js / data/topics.js | 数据载入、句段锚点、主题关键词证据及组合筛选 |
 | index.html、styles.css、app.js | 响应式阅读界面、逐句展开、书签与阅读设置 |
 | SKILL.md、.agents/skills/、references/ | AI Skill 及准确引文、现实决策方法 |
 | docs/ | 架构、文献、数据模型、设计、验证、路线与部署 |
@@ -105,7 +115,7 @@ npm run serve
 
 「知行合一」并非鼓励冲动行事；「致良知」不等同于无需外部证据；「心即理」不能否定客观规律或现代知识。在健康、法律、工程、金融和公共事务中，使用经过核验的专业依据，古典思想作为反思辅助。
 
-[文本来源及版权](./CONTENT-ATTRIBUTION.md) · [文本模型](./docs/CONTENT-MODEL.md) · [校勘规范](./docs/TEXTUAL-SOURCES.md) · [路线图](./docs/ROADMAP.md)
+[释读编修规范](./docs/EDITORIAL-WORKFLOW.md) · [专题与证据](./docs/TOPIC-ONTOLOGY.md) · [文本来源及版权](./CONTENT-ATTRIBUTION.md) · [文本模型](./docs/CONTENT-MODEL.md) · [校勘规范](./docs/TEXTUAL-SOURCES.md) · [路线图](./docs/ROADMAP.md)
 
 ---
 

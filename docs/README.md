@@ -15,3 +15,10 @@
 9. [ROADMAP.md](./ROADMAP.md)：分阶段任务与未完成项。
 
 所有「已实现」状态都应当有对应提交或测试证据。原文的收集完成不意味着版本校勘或现代译注工作完成。
+
+
+## Stage 1 新增文档
+
+- [EDITORIAL-WORKFLOW.md](./EDITORIAL-WORKFLOW.md)：草稿、逐句译注、校勘证据与人工审稿的明确区分。
+- [TOPIC-ONTOLOGY.md](./TOPIC-ONTOLOGY.md)：八大心学专题的事实依据、关键词局限与知识图谱发展。
+- npm run coverage 输出可机器处理的原文与释读完成情况。
