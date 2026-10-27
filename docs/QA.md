@@ -45,3 +45,8 @@ npm test 执行 Node.js 语法检查及 scripts/validate.mjs 的实体校验：
 - npm run coverage 可生成统计报告，且未经校勘的条目不冒充 verified。
 
 注意：这些属于自动结构测试，不代表浏览器真实点击、可访问性或史料校勘的独立验收。
+
+
+## GitHub Pages HTTP 验收（2026-10-27）
+
+run 40473680574 中的 Verify public Pages content 实际从 https://1998x-stack.github.io/chuanXiLu/ 获取 HTML、JS、CSS、主题脚本和三个卷本 JSON，并断言3卷343条正篇、5份附录正确。该 HTTP smoke 检查与 js 纯函数测试均通过；尚未包含真实浏览器 DOM 行为或读屏人工验收。

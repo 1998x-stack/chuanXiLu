@@ -4,7 +4,7 @@
 
 一座以明代书院、宣纸、墨色与朱印为视觉线索的《传习录》**数字研读馆**，同时提供给 Codex / OpenCode 使用的 **chuanxilu-wisdom AI Skill**。目标是把王阳明心学用于理解现实问题：辨明本心与事实、将认知转化为行动、通过实践反馈修正判断。
 
-[阅读网站（待 Pages 成功发布后启用）](https://1998x-stack.github.io/chuanXiLu/) · [SKILL 指令](./SKILL.md) · [文档索引](./docs/README.md) · [版本及溯源](./CONTENT-ATTRIBUTION.md)
+[阅读网站（GitHub Pages 已上线）](https://1998x-stack.github.io/chuanXiLu/) · [SKILL 指令](./SKILL.md) · [文档索引](./docs/README.md) · [版本及溯源](./CONTENT-ATTRIBUTION.md)
 
 ## 当前版本交付
 

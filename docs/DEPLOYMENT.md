@@ -33,3 +33,8 @@ npm run serve
 ## 第一次启用 Pages 的注意事项
 
 新仓库首次执行 actions/configure-pages 可能得到 404，表明 GitHub Pages Site 未启用。工作流已设置 enablement: true 以尝试自动启用；若组织策略或动作令牌不允许，需仓库管理员在 Settings → Pages 将 Source 设为 GitHub Actions，然后重跑 Deploy GitHub Pages。不能将 npm build 成功误称网页已上线。
+
+
+## 2026-10-27 线上验证（已完成）
+
+GitHub Actions run 40473680574 完成 configure-pages、upload-pages-artifact、deploy-pages，并通过 Verify public Pages content 步骤。GitHub Runner 使用公开地址 https://1998x-stack.github.io/chuanXiLu/ 下载 index.html、app.js、styles.css、data/topics.js 和三卷 volume JSON，检查正篇129+71+143条及5份序跋按语，均成功。公开部署可用，但不能据此声称全站键盘、读屏、手机浏览器端到端测试已完成。

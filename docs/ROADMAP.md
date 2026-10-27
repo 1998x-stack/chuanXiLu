@@ -12,7 +12,7 @@
 - [x] CI、静态打包和 Pages 工作流配置
 - [x] GitHub Actions 已实际执行并通过 npm test / npm run build（主分支 run 40470510889）
 - [x] 最新 main 分支 CI 通过
-- [ ] 在 Settings → Pages 启用 GitHub Actions 发布源，重跑 Deploy GitHub Pages，并验证公网 URL（首次运行未配置 Pages，导致 configure-pages 失败）
+- [x] 2026-10-27 自动启用 GitHub Pages 并完成公网资源校验（run 40473680574）；首页、脚本、样式和三卷 JSON 可访问
 - [ ] 375px/1440px 浏览器、键盘与读屏完整验收
 
 ## Stage 1 · 可解释的逐句研读（持续完善）
