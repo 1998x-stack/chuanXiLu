@@ -20,12 +20,17 @@ VOLUMES=[json.loads((ROOT/"data"/f"volume-{i}.json").read_text()) for i in (1,2,
 ENTS={e["number"]:e for v in VOLUMES for e in v["entries"]}
 
 def download(title):
-    url="https://zh.wikisource.org/w/api.php?"+urllib.parse.urlencode({"action":"parse","prop":"wikitext","format":"json","formatversion":"2","page":title})
-    req=urllib.request.Request(url,headers={"User-Agent":"chuanxilu-critical-edition-comparison/0.1 (github.com/1998x-stack/chuanXiLu)","Accept":"application/json"})
-    with urllib.request.urlopen(req,timeout=30) as f:
+    # Resolve one revision first, then explicitly ask for that fixed revision's raw wikitext.
+    rev_url="https://zh.wikisource.org/w/api.php?"+urllib.parse.urlencode({"action":"query","prop":"revisions","rvprop":"ids","format":"json","formatversion":"2","titles":title})
+    headers={"User-Agent":"chuanxilu-critical-edition-comparison/0.1 (github.com/1998x-stack/chuanXiLu)","Accept":"application/json"}
+    with urllib.request.urlopen(urllib.request.Request(rev_url,headers=headers),timeout=30) as f:
+        page=json.load(f)["query"]["pages"][0]
+    rev=page["revisions"][0]["revid"]
+    url="https://zh.wikisource.org/w/api.php?"+urllib.parse.urlencode({"action":"parse","prop":"wikitext","format":"json","formatversion":"2","oldid":rev})
+    with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=30) as f:
         j=json.load(f)
     if "error" in j: raise RuntimeError(str(j["error"]))
-    return j["parse"]["wikitext"],j["parse"].get("revid")
+    return j["parse"]["wikitext"],rev
 
 # Only the third-party editorial apparatus is stripped, never edited inside the old source.
 def clean_wikitext(text):
