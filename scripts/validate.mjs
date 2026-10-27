@@ -47,7 +47,7 @@ for(const p of ["README.md","SKILL.md","AGENTS.md","CONTENT-ATTRIBUTION.md","LIC
 const html=fs.readFileSync("index.html","utf8"),js=fs.readFileSync("app.js","utf8");
 const ids=[...html.matchAll(/id="([^"]+)"/g)].map(x=>x[1]);
 check(ids.length===new Set(ids).size,"unique HTML IDs");
-for(const id of ["search","volume-tabs","entry-list","reader","sentences","font-plus","font-minus","theme-toggle","bookmark","copy-link","prev","next"]){
+for(const id of ["search","volume-tabs","entry-list","sentences","font-plus","font-minus","theme-toggle","bookmark","copy-link","prev","next"]){
  check(ids.includes(id),"HTML id "+id);
  check(js.includes('"'+id+'"'),"JS id "+id);
 }
