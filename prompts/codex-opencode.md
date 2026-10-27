@@ -3,9 +3,9 @@
 ## 在仓库内通用（建议优先用）
 
 ~~~text
-请读取本仓库 SKILL.md、references/decision-framework.md、references/quotation-guide.md，并根据问题逐条读取 data/volume-*.json 中的原文。
+请首先读取 docs/SOURCE-CRITICAL-AUDIT.md，确认当前数据仍未独立校勘；然后读取本仓库 SKILL.md、references/decision-framework.md、references/quotation-guide.md，并根据问题逐条读取 data/volume-*.json 中的原文。
 
-以 chuanxilu-wisdom Skill 分析我的问题：先分清事实、立场和动机；再选与问题相符的知行合一、致良知、格物、事上磨炼等思想；引用1—2句准确原文，标注卷/篇/本项目条目 ID；紧随现代释义、上下文、异本及现实边界；最终提出1—3项可验证行动。不要假托心学否定外部证据，不要编造古文。我的问题：________
+以 chuanxilu-wisdom Skill 分析我的问题：先分清事实、立场和动机；再选与问题相符的知行合一、致良知、格物、事上磨炼等思想；引用1—2句**经独立可靠文本复核**的短句，说明所据底本和修订来源，区分通行参考号与本项目旧ID；若没有复核条件，则不要用逐字古籍引文；紧随现代释义、上下文、异本及现实边界；最终提出1—3项可验证行动。不要假托心学否定外部证据，不要编造古文。我的问题：________
 ~~~
 
 ## Codex
