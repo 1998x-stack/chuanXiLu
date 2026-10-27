@@ -1,0 +1,36 @@
+name: External text witness audit
+on:
+  push:
+    branches: [fix/source-critical-audit]
+    paths:
+      - scripts/audit-wikisource.mjs
+      - scripts/compare-witness.py
+      - .github/workflows/witness-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  witness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node scripts/audit-wikisource.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install opencc-python-reimplemented==0.1.7 rapidfuzz==3.14.1
+      - run: python scripts/compare-witness.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wiksource-external-audit
+          path: |
+            audit/wikisource-observations.json
+            audit/witness-text-differences.json
+            audit/witness-text-differences.csv
+            audit/witness-text-differences.md
+            audit/alignment-suggestions.json
+          if-no-files-found: ignore

@@ -1,4 +1,4 @@
-import { loadCorpus, splitSentences, filterDocuments, documentById, documentKind, citationOf, readingHash, parseReadingHash, sourceLink } from "./data/index.js";
+import { loadCorpus, splitSentences, filterDocuments, documentById, documentKind, citationOf, readingHash, parseReadingHash, sourceLink, witnessLabel } from "./data/index.js";
 import { ANNOTATIONS, annotationCount } from "./data/annotations.js";
 import { TOPIC_GUIDE, topicById, topicHits } from "./data/topics.js";
 
@@ -81,7 +81,7 @@ function renderReader(){
   const preface=doc.kind==="paratext",segments=splitSentences(doc.text),notes=ANNOTATIONS[doc.id]??[];
   el("reading-position").textContent="卷"+doc.volume+" · "+doc.section+" · "+doc.id;
   el("entry-title").textContent=preface?doc.title:"第 "+doc.number+" 条 · "+doc.section;
-  el("document-meta").textContent=(preface?"附属文献":"正篇 · "+documentKind(doc))+"  /  原文版本：电子转录，待独立校勘";
+  el("document-meta").textContent=(preface?"附属文献":"正篇 · "+documentKind(doc))+"  /  "+(preface?"序跋附录":witnessLabel(doc))+" / 未经独立刊本校勘";
   el("entry-summary").textContent="共 "+segments.length+" 个标点句段 · "+notes.length+
     " 则草稿释读 · 当前全站共 "+annotationCount()+" 则选句释读；未经完整译校";
   const panel=el("sentences");panel.replaceChildren();

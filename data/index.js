@@ -1,5 +1,6 @@
 const VOLUME_FILES = ["./data/volume-1.json", "./data/volume-2.json", "./data/volume-3.json"];
 export const VOLUME_NAMES = ["上", "中", "下"];
+export {witnessLabel,crosswalkNumber} from "./concordance.js";
 export const READING_KINDS = ["全部", "问答语录", "论学书信", "训蒙教约", "序跋附录"];
 export const SOURCE_COMMIT = "1910cd136f3dd30b41514e61e1a1ebac6adf5771";
 
