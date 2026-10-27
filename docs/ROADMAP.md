@@ -10,8 +10,9 @@
 - [x] 阅读网站、全文搜索、分卷、URL、收藏、字号、明暗主题
 - [x] Codex/OpenCode chuanxilu-wisdom Skill 与准确引文规范
 - [x] CI、静态打包和 Pages 工作流配置
-- [ ] 验证 npm test / npm run build 实际执行成功
-- [ ] 验证最新 CI 与 Pages 公开 URL 实际成功
+- [x] GitHub Actions 已实际执行并通过 npm test / npm run build（主分支 run 40470510889）
+- [x] 最新 main 分支 CI 通过
+- [ ] 在 Settings → Pages 启用 GitHub Actions 发布源，重跑 Deploy GitHub Pages，并验证公网 URL（首次运行未配置 Pages，导致 configure-pages 失败）
 - [ ] 375px/1440px 浏览器、键盘与读屏完整验收
 
 ## Stage 1 · 可解释的逐句研读
