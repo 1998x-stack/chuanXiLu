@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install opencc-python-reimplemented==0.1.7
+      - run: python -m pip install opencc-python-reimplemented==0.1.7 rapidfuzz==3.14.1
       - run: python scripts/compare-witness.py
       - uses: actions/upload-artifact@v4
         if: always()
@@ -32,4 +32,5 @@ jobs:
             audit/witness-text-differences.json
             audit/witness-text-differences.csv
             audit/witness-text-differences.md
+            audit/alignment-suggestions.json
           if-no-files-found: ignore
